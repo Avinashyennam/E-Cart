@@ -3,7 +3,7 @@ import { useState } from 'react'
 // import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
-import Footer from './components/Footer'
+import Footer from './components/Footer/Footer'
 
 function App() {
   const [count, setCount] = useState(0)

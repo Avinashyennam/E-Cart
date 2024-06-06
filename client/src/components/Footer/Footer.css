@@ -1,0 +1,6 @@
+.social-icons li{
+    display: flex;
+    align-items: center;
+    /* justify-content: spac; */
+    gap: 6px;
+}
