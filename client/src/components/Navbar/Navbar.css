@@ -1,0 +1,5 @@
+.logo-text{
+    color: transparent;
+    background: linear-gradient(to top, #FEB561, #F31F1F);
+    background-clip: text;
+}
