@@ -1,0 +1,27 @@
+.container{
+    background: linear-gradient(to bottom, #FCEFEF, #AD579B);
+}
+    
+.hero-text{
+    animation: fadeIn 2s;
+}
+
+.hero-img-con{
+    position: relative;
+}
+
+.hero-img{
+    z-index: 2;
+}
+
+.hero-curve{
+    position: absolute;
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    z-index: 1;
+    top: 0;
+    right: 10%;
+}
+/* B07EB1 */

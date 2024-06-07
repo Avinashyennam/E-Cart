@@ -10,11 +10,11 @@ let Navbar = ()=>{
                     <h1 className='logo-text text-4xl font-bold'>Cart</h1>
                 </div>
                 <div>
-                    <ul className='flex gap-8 justify-between'>
-                        <li className='text-2xl font-medium'>Shop</li>
-                        <li className='text-2xl font-medium'>Men</li>
-                        <li className='text-2xl font-medium'>Women</li>
-                        <li className='text-2xl font-medium'>Kids</li>
+                    <ul className='flex gap-12 justify-between'>
+                        <li className='text-2xl font-medium hover:font-semibold'>Shop</li>
+                        <li className='text-2xl font-medium hover:font-semibold'>Men</li>
+                        <li className='text-2xl font-medium hover:font-semibold'>Women</li>
+                        <li className='text-2xl font-medium hover:font-semibold'>Kids</li>
                     </ul>
                 </div>
                 <div className='flex gap-4 justify-between items-center'>
