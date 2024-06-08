@@ -1,5 +1,33 @@
 .logo-text{
     color: transparent;
-    background: linear-gradient(to top, #FEB561, #F31F1F);
+    background: linear-gradient(to top, #FEB561, #f31f1f);
     background-clip: text;
+}
+
+.nav-menu li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main hr{
+    border: none;
+    width: 80%;
+    height: 3px;
+    border-radius: 10px;
+    background: #F31F1F;
+}
+
+.cart-counter{
+    width: 17px;
+    height: 17px;
+    /* border: none; */
+    border-radius: 50%;
+    background: #F31F1F;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -19px;
+    margin-left: -30px;
 }

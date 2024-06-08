@@ -1,5 +1,6 @@
 .container{
-    background: linear-gradient(to bottom, #FCEFEF, #AD579B);
+    background: linear-gradient(to top, #fcf4f4, #de8ecc);
+    /* #AD579B */
 }
     
 .hero-text{
@@ -16,12 +17,14 @@
 
 .hero-curve{
     position: absolute;
-    height: 400px;
-    width: 400px;
+    height: 25vw;
+    width: 25vw;
     border-radius: 50%;
     border: 2px solid #000;
     z-index: 1;
     top: 0;
     right: 10%;
+    background: radial-gradient(50% 50% at 50% 50%, #FFF7F7 0%, #D89595 50%, #572F2F 100%);
+    animation: fadeIn 2s;
 }
 /* B07EB1 */

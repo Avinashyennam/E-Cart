@@ -1,0 +1,15 @@
+/* img{
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in;
+}
+img:hover{
+    transform: scale(1);
+} */
+.item{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    transition: transform 0.2s ease-in;
+}
+.item:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}

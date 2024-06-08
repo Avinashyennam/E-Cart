@@ -1,29 +1,36 @@
-import React from 'react';
+import React,{useState} from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 // import logo from '../assets/logo.png';
 let Navbar = ()=>{
+
+    const [menu, setMenu] = useState("shop");
+
     return(
         <>
-            <div className='flex gap-4 justify-between items-center mx-10'>
+            <div className='main flex gap-4 justify-between items-center mx-10'>
                 <div className='flex gap-1 justify-around items-center'>
                     <img src='/logo.png' alt='not found' className='w-20 h-20'/>
                     <h1 className='logo-text text-4xl font-bold'>Cart</h1>
                 </div>
                 <div>
-                    <ul className='flex gap-12 justify-between'>
-                        <li className='text-2xl font-medium hover:font-semibold'>Shop</li>
-                        <li className='text-2xl font-medium hover:font-semibold'>Men</li>
-                        <li className='text-2xl font-medium hover:font-semibold'>Women</li>
-                        <li className='text-2xl font-medium hover:font-semibold'>Kids</li>
+                    <ul className='nav-menu flex gap-12 justify-between'>
+                    <Link to='/'><li onClick={()=>setMenu("shop")} className='text-2xl font-medium hover:font-semibold'>Shop {menu === "shop"?<hr />:<></>}</li></Link>
+                    <Link to='/men'><li onClick={()=>setMenu("men")} className='text-2xl font-medium hover:font-semibold'>Men {menu === "men"?<hr />:<></>}</li></Link>
+                    <Link to='/women'><li onClick={()=>setMenu("women")} className='text-2xl font-medium hover:font-semibold'>Women {menu === "women"?<hr />:<></>}</li></Link>
+                    <Link to='/kids'><li onClick={()=>setMenu("kids")} className='text-2xl font-medium hover:font-semibold'>Kids {menu === "kids"?<hr />:<></>}</li></Link>
                     </ul>
                 </div>
                 <div className='flex gap-4 justify-between items-center'>
                     <div className='bg-red-500 px-2 py-1 rounded-lg'>
-                        <button className='text-xl text-white'>Login</button>
+                        <Link to='/login'><button className='text-xl text-white' onClick={()=>setMenu("login")}>Login</button></Link>
+                        {menu === "login"?<hr />:<></>}
                     </div>
-                    <div>
-                        <img src='/icons8-cart-100.png' alt='not found' width={36} height={35}/>
+                    <div className='flex flex-col items-center gap-1'>
+                        <Link to='/cart'><img src='/icons8-cart-100.png' alt='not found' width={36} height={35} onClick={()=>setMenu("cart")}/></Link>  
+                        {menu === "cart"?<hr />:<></>}             
                     </div>
+                    <div className='cart-counter'>0</div>
                 </div>
             </div>
         </>
