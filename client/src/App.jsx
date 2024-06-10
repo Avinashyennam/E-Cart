@@ -14,12 +14,15 @@ import ShopCategory from './pages/ShopCategory'
 // import banner2 from './components/assets/banner2.jpg'
 import women_banner from './components/assets/women_banner.png';
 import men_banner from './components/assets/men_banner.png';
+import kids_banner from './components/assets/kids_banner.png';
 function App() {
 
   const womenBg = '#c26228';
   const womenBannerText = "Unleash Your Inner Fashionista! Exclusive Women's Wear"
   const menbg = "#9ca6b0";
   const mentext = "New Arrivals: Trendy Styles for Every Man"
+  const kidsbg = "#9886c2";
+  const kidtext = "Brighten Their Day with Our Kids Collection";
   const menStyles = {
     color: "transparent",
     background: "linear-gradient(to right, #030b20 60%, #7f8da7)",
@@ -36,7 +39,7 @@ function App() {
           <Route path='/' element = {<Home />} />
           <Route path='/men' element = {<ShopCategory category="men" banner={men_banner} bg={menbg} text={mentext} styles={menStyles}/>} />
           <Route path='/women' element = {<ShopCategory category="women" banner={women_banner} bg={womenBg} text={womenBannerText} styles={womenStyles}/>} />
-          <Route path='/kids' element = {<ShopCategory category="kids" />} />
+          <Route path='/kids' element = {<ShopCategory category="kid" banner={kids_banner} bg={kidsbg} text={kidtext} />} />
           <Route path='/login' element = {<Login />} />
           <Route path='/cart' element = {<Cart />} />
           <Route path='/product' element = {<Product />}>
