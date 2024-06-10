@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import ShopContextProvider, { ShopContext } from "../context/ShopContext";
 import Item from "../components/Item/Item";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faArrowDown} from '@fortawesome/free-solid-svg-icons';
 const ShopCategory = (props) => {
 
     const { all_products } = useContext(ShopContext)
@@ -15,9 +17,13 @@ const ShopCategory = (props) => {
                 </div>
                 <img src={props.banner} alt="not found" style={{ width: "400px", height: "550px" }} />
             </div>
-            <div className="flex flex-col items-center p-8">
-                <div>
-                    <h1 className='text-4xl font-bold my-10'>{props.category} collections</h1>
+            <div className="flex flex-col gap-10 items-center p-8">
+                <div className="flex justify-between w-full px-20 text-xl">
+                    <h1 className=""><b>Showing 1-12 </b>out of 36 products</h1>
+                    <div className="flex gap-2 items-center border border-slate-700 rounded-full py-1 px-3">
+                        <h1>Sort by</h1>
+                        <FontAwesomeIcon icon={faArrowDown}style={{width:"13px", height:"20px"}} />
+                    </div>
                 </div>
                 <div className="flex flex-wrap gap-12 justify-center">
                     {
