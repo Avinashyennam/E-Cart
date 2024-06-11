@@ -1,0 +1,11 @@
+.login-form{
+    background: linear-gradient(to top, #fea061, #f31f1f);
+}
+.login-form input{
+    border: 2px solid black;
+    height: 45px;
+    width: 80%;
+    border-radius: 10px;
+    padding: 10px;
+    /* auto-c */
+}
