@@ -15,7 +15,7 @@ const ShopCategory = (props) => {
                 <div style={props.styles} className="flex items-center justify-center w-1/2">
                     <h1 className="flex text-6xl font-bold">{props.text}</h1>
                 </div>
-                <img src={props.banner} alt="not found" style={{ width: "400px", height: "550px" }} />
+                <img src={props.banner} alt="not found" style={{ width: "370px", height: "550px" }} />
             </div>
             <div className="flex flex-col gap-10 items-center p-8">
                 <div className="flex justify-between w-full px-20 text-xl">

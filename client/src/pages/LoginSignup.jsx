@@ -74,7 +74,7 @@ const Login = ()=>{
                         <form className="login-form flex flex-col justify-center items-center gap-4 border p-10 rounded-lg" onSubmit={handleSignUp}>
                             <input type="text" name="name" value={signupdata.name} placeholder="Enter name" onChange={(e)=>setSignupdata(e.target.value)}/>
                             <input type="email" name="email" value={signupdata.email} placeholder="Enter Email" onChange={(e)=>setSignupdata(e.target.value)}/>
-                            <input type="password" name="password" value={userdata.password} placeholder="Enter Password" onChange={(e)=>setSignupdata(e.target.value)}/>
+                            <input type="password" name="password" value={signupdata.password} placeholder="Enter Password" onChange={(e)=>setSignupdata(e.target.value)}/>
                             <button className="bg-white text-black text-xl w-28 p-1 rounded-lg">Continue</button>
                             <h1 className="text-xl">Already have an account? <span className="text-blue-700 cursor-pointer" onClick={()=>setLogin(!login)}>Click </span>here to login</h1>
                         </form>
