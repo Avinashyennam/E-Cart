@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faTag, faStar, faStarHalfStroke, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 const Product = () => {
-    const { all_products } = useContext(ShopContext);
-    const {addToCart} = useContext(ShopContext);
+    const { all_products, addToCart } = useContext(ShopContext);
     const { productId } = useParams();
     const product = all_products.find((e) => e.id === Number(productId));
     return (

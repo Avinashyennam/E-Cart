@@ -4,6 +4,12 @@
     background-clip: text;
 }
 
+/* .main{
+    position: sticky;
+    top: 0;
+    background-color: white;
+    width: 100%;
+} */
 .nav-menu li{
     display: flex;
     flex-direction: column;

@@ -1,5 +1,6 @@
 import React, {createContext, useState} from "react";
 import all_products from '../components/assets/all_products';
+
 export const ShopContext = createContext(null);
 
 const getDefaultCart = ()=>{
@@ -13,17 +14,27 @@ const ShopContextProvider = (props)=>{
 
     const [cartItems, setCartItems] = useState(getDefaultCart);
     
-
-    console.log(cartItems);
-    const addTocart = (itemId)=>{
-        setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}))
+    const addToCart = (itemId)=>{
+        setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}));
+        console.log("After adding cart are ",cartItems);
     }
+
+    // const addToCart = (itemId) => {
+    //     setCartItems((prev) => {
+    //         const updatedItems = {...prev, [itemId]: (prev[itemId] || 0) + 1};
+    //         console.log("Updated cart items: ", updatedItems);
+    //         return updatedItems;
+    //     });
+    //     console.log(cartItems);
+    //     alert("Item added into cart");
+    // };
+    
 
     const removeFromCart = (itemId)=>{
         setCartItems((prev)=>({...prev,[itemId]:prev[itemId]-1}))
     }
 
-    const contextValue = {all_products, cartItems, addTocart, removeFromCart}
+    const contextValue = {all_products, cartItems, addToCart, removeFromCart}
     
     return(
         <ShopContext.Provider value={contextValue}>
