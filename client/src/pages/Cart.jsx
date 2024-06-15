@@ -2,12 +2,13 @@ import React, { useState, useContext } from "react";
 import { ShopContext } from "../context/ShopContext";
 
 const Cart = () => {
-    const { cartItems, all_products, removeFromCart } = useContext(ShopContext);
+    const { cartItems, all_products, removeFromCart, count } = useContext(ShopContext);
+
     return (
         <>
             <div className="flex gap-8 p-8 bg-slate-100">
                 <div className=" border-black w-3/5 bg-white">
-                    <h1 className="text-xl mx-10 my-2">My cart</h1>
+                    <h1 className="text-xl mx-10 my-2">My cart ({count})</h1>
                     <hr />
                     {
                         all_products.map((item) => {
@@ -42,7 +43,6 @@ const Cart = () => {
                                     </div>
                                 )
                             }
-
                         })
                     }
                 </div>
