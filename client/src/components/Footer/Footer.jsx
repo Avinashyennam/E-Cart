@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
+import { Link } from 'react-router-dom';
+import { ShopContext } from '../../context/ShopContext';
 import './Footer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faInstagram, faWhatsapp, faXTwitter} from '@fortawesome/free-brands-svg-icons';
 const Footer = ()=>{
+
+    const {setMenu} = useContext(ShopContext);
     return(
         <>
             <div className='bg-black flex justify-between p-16 text-white font-serif'>
@@ -13,11 +17,11 @@ const Footer = ()=>{
                     <p className='text-white'>Shop and enjoy with your family</p>
                 </div>
                 <div>
-                    <ul className='flex flex-col gap-4 text-lg'>
-                        <li>Shop</li>
-                        <li>Men</li>
-                        <li>Women</li>
-                        <li>Kids</li>
+                    <ul className='footer-links flex flex-col gap-4 text-lg'>
+                        <Link to='/'><li onClick={()=> setMenu("shop")}>Shop</li></Link>
+                        <Link to='/men'><li onClick={()=> setMenu("men")}>Men</li></Link>
+                        <Link to='/women'><li onClick={()=> setMenu("women")}>Women</li></Link>
+                        <Link to='/kids'><li onClick={()=> setMenu("kids")}>Kids</li></Link>
                     </ul>
                 </div>
                 <div className='flex flex-col gap-2'>

@@ -2,17 +2,16 @@ import React,{useContext, useState} from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { ShopContext } from '../../context/ShopContext';
-// import logo from '../assets/logo.png';
 let Navbar = ()=>{
 
-    const [menu, setMenu] = useState("shop");
     const {count} = useContext(ShopContext)
+    const {menu, setMenu} = useContext(ShopContext);
 
     return(
         <>
             <div className='main flex gap-4 justify-between items-center mx-10'>
                 <div className='flex gap-1 justify-around items-center'>
-                    <img src='/logo.png' alt='not found' className='w-20 h-20'/>
+                    <Link to='/'><img src='/logo.png' alt='not found' className='w-20 h-20' onClick={()=> setMenu("shop")}/></Link>
                     <h1 className='logo-text text-4xl font-bold'>Cart</h1>
                 </div>
                 <div>
