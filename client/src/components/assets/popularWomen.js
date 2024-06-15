@@ -5,28 +5,28 @@ import p4_img from './img4.jpg';
 
 let data_product = [
     {
-        id: 1,
+        id: 36,
         name: 'Women Shirred Wide Hem Semi Sheer Back Top M(6)-Black',
         image: p1_img,
         old_price: 250.0,
         new_price: 190.0,
     },
     {
-        id: 2,
+        id: 37,
         name: 'Solid Crew Neck Crop T-shirt for Spring and Summer',
         image: p2_img,
         old_price: 250.0,
         new_price: 190.0,
     },
     {
-        id: 3,
+        id: 38,
         name: 'Solid Cool Sky Blue Crop Top Full Sleeves',
         image: p3_img,
         old_price: 250.0,
         new_price: 190.0,
     },
     {
-        id: 4,
+        id: 39,
         name: 'SHEIN BASICS Cotton Square Neck Form Fitted TeeI',
         image: p4_img,
         old_price: 250.0,

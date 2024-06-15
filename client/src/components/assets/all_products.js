@@ -34,6 +34,10 @@ import p33_img from "./product_33.png";
 import p34_img from "./product_34.png";
 import p35_img from "./product_35.png";
 import p36_img from "./product_36.png";
+import p37_img from './img1.jpg';
+import p38_img from './img2.jpg';
+import p39_img from './img3.jpg';
+import p40_img from './img4.jpg';
 
 let all_product = [
   {
@@ -324,6 +328,38 @@ let all_product = [
     new_price: 85.0,
     old_price: 120.5,
   },
+  {
+    id: 36,
+    name: 'Women Shirred Wide Hem Semi Sheer Back Top M(6)-Black',
+    category: "women",
+    image: p37_img,
+    old_price: 250.0,
+    new_price: 190.0,
+},
+{
+    id: 37,
+    name: 'Solid Crew Neck Crop T-shirt for Spring and Summer',
+    category: "women",
+    image: p38_img,
+    old_price: 250.0,
+    new_price: 190.0,
+},
+{
+    id: 38,
+    name: 'Solid Cool Sky Blue Crop Top Full Sleeves',
+    category: "women",
+    image: p39_img,
+    old_price: 250.0,
+    new_price: 190.0,
+},
+{
+    id: 39,
+    name: 'SHEIN BASICS Cotton Square Neck Form Fitted TeeI',
+    category: "women",
+    image: p40_img,
+    old_price: 250.0,
+    new_price: 190.0,
+}
 ];
 
 export default all_product;
