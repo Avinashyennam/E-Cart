@@ -2,3 +2,16 @@
     background-color: #fed6e1;
     /* background: linear-gradient(to top, #fed6e1, #ffdfec); */
 }
+
+@media  screen and (max-width:992px) {
+    img{
+        width: 300px;
+        height: 300px;
+    }
+    .text h1{
+        font-size: 35px;
+    }
+    .text h3{
+        font-size: 20px;
+    }
+}

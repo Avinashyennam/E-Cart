@@ -2,7 +2,7 @@ import './Hero.css';
 const Hero = ()=>{
     return(
         <>
-            <div className="container flex justify-between">
+            <div className="cont flex justify-between">
                 <div className="hero-text w-1/2 flex flex-col gap-6 justify-center items-center">
                     <h1 className='text-7xl w-[75%] font-bold'>Elevate your style with ease.</h1>
                     <h3 className='text-2xl w-[75%] font-semibold'>Shop high-quality, on-trend prices at cart</h3>
