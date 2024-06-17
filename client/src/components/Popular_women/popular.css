@@ -1,0 +1,15 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 600px) {
+    .popular-text{
+        padding: 0px;
+        /* font-size: 15px; */
+    }
+    .popular-text h1{
+        font-size: 30px;
+    }
+}

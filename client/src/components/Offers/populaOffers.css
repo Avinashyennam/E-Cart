@@ -14,4 +14,20 @@
     .text h3{
         font-size: 20px;
     }
+    /* .button-div{
+        width: 50%;
+    } */
+}
+
+@media screen and (max-width: 600px) {
+    .popular{
+        padding: 10px 0px;
+    }
+    .offers-sec{
+        display: flex;
+        flex-direction: column;
+    }
+    .offers-sec .text .button-div{
+        width: 40%;
+    }
 }

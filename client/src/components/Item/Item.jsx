@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import './Item.css';
 const Item = (props)=>{
     return(
-        <div className="item flex flex-col w-72 rounded-lg">
+        <div className="item flex flex-col w-72 rounded-lg sm: w-64">
             <div className="item-image">
                 <Link to={`/product/${props.id}`}><img src={props.image} alt="not found" style={{width:"330px", height:"370px", borderRadius:"6px"}}/></Link>
             </div>

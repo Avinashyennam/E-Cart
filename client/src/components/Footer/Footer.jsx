@@ -9,8 +9,8 @@ const Footer = ()=>{
     const {setMenu} = useContext(ShopContext);
     return(
         <>
-            <div className='bg-black flex justify-between p-16 text-white font-serif'>
-                <div>
+            <div className='footer bg-black flex flex-wrap justify-between p-16 text-white font-serif'>
+                <div className='footer-text'>
                     <div>
                         <img src='/logo.png' alt='not found' className='w-16 h-16'/>
                     </div>

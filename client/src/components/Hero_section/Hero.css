@@ -79,6 +79,20 @@
     }
 }
 
-@media screen and (max-width: 600px) {
-    
+@media screen and (max-width: 600px) {    
+    .hero-text h1{
+        font-size: 30px;
+    }
+    .hero-text h3{
+        font-size: 15px;
+    }
+    .hero-curve{
+        height: 26vw;
+        width: 26vw;
+        right: 37%;
+    }
+    .hero-img-con img{
+        width: 250px;
+        height: 310px;
+    }
 }

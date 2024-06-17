@@ -66,10 +66,16 @@
         display: none;
     }
 }
-@media screen and (max-width: 639px){
+@media screen and (max-width: 600px){
     .main .logo img{
         width: 40px;
         height: 40px;
+    }
+    .button-div{
+        width: 65px;
+    }
+    .logo-text{
+        font-size: 20px;
     }
 }
 /* @media screen and (max-width: 600px){

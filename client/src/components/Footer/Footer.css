@@ -12,3 +12,17 @@
     border-radius: 10px;
     background: #F31F1F;
 }
+
+@media screen and (max-width: 600px) {
+    .footer{
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+        align-items: center;
+    }
+    .footer .footer-text{
+        display: flex;
+        align-items: center;
+        column-gap: 15px;
+    }
+}

@@ -11,11 +11,11 @@ const ShopCategory = (props) => {
 
     return (
         <>
-            <div className="flex justify-center items-center" style={{ backgroundColor: `${props.bg}` }}>
+            <div className="flex justify-center items-center md:px-2" style={{ backgroundColor: `${props.bg}` }}>
                 <div style={props.styles} className="flex items-center justify-center w-1/2">
-                    <h1 className="flex text-6xl font-bold">{props.text}</h1>
+                    <h1 className="flex text-6xl font-bold md:text-5xl sm:text-4xl">{props.text}</h1>
                 </div>
-                <img src={props.banner} alt="not found" style={{ width: "370px", height: "550px" }} />
+                <img src={props.banner} alt="not found"  className="w-[22rem] h-[30rem] md:h-88"/>
             </div>
             <div className="flex flex-col gap-10 items-center p-8">
                 <div className="flex justify-between w-full px-20 text-xl">
