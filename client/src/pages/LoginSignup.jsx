@@ -59,11 +59,11 @@ const Login = ()=>{
                 <div className="text-3xl">
                     <h1>Welcome to E-CART</h1>
                 </div>
-                <div className="w-2/5">
+                <div className="w-2/5 sm:w-full">
 
                     {(login == true)?
                     <div>
-                        <form className="login-form flex flex-col justify-center items-center gap-4 border p-10 rounded-lg" onSubmit={handleLogin}>
+                        <form className="login-form flex flex-col justify-center items-center gap-4 border p-10 rounded-lg sm:p-4" onSubmit={handleLogin}>
                             <input type="email" name="email" value={loginData.email} placeholder="Enter Email" onChange={(e)=>setLoginData(e.target.value)}/>
                             <input type="password" name="password" value={loginData.password} placeholder="Enter Password" onChange={(e)=>setLoginData(e.target.value)}/>
                             <button className="bg-white text-black text-xl w-28 p-1 rounded-lg">Login</button>
@@ -71,7 +71,7 @@ const Login = ()=>{
                         </form>
                     </div>:
                     <div>
-                        <form className="login-form flex flex-col justify-center items-center gap-4 border p-10 rounded-lg" onSubmit={handleSignUp}>
+                        <form className="login-form flex flex-col justify-center items-center gap-4 border p-10 rounded-lg sm:p-4" onSubmit={handleSignUp}>
                             <input type="text" name="name" value={signupdata.name} placeholder="Enter name" onChange={(e)=>setSignupdata(e.target.value)}/>
                             <input type="email" name="email" value={signupdata.email} placeholder="Enter Email" onChange={(e)=>setSignupdata(e.target.value)}/>
                             <input type="password" name="password" value={signupdata.password} placeholder="Enter Password" onChange={(e)=>setSignupdata(e.target.value)}/>
