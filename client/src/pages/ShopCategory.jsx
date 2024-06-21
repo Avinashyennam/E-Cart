@@ -13,14 +13,14 @@ const ShopCategory = (props) => {
         <>
             <div className="flex justify-center items-center md:px-2" style={{ backgroundColor: `${props.bg}` }}>
                 <div style={props.styles} className="flex items-center justify-center w-1/2">
-                    <h1 className="flex text-6xl font-bold md:text-5xl sm:text-4xl">{props.text}</h1>
+                    <h1 className="flex text-6xl font-bold sm:text-4xl md: text-5xl ">{props.text}</h1>
                 </div>
-                <img src={props.banner} alt="not found"  className="w-[22rem] h-[30rem] md:h-88"/>
+                <img src={props.banner} alt="not found"  className="w-[22rem] h-[30rem] md:h-70 md:w-50 sm:w-45 sm:h-50"/>
             </div>
             <div className="flex flex-col gap-10 items-center p-8">
                 <div className="flex justify-between w-full px-20 text-xl">
                     <h1 className=""><b>Showing 1-12 </b>out of 36 products</h1>
-                    <div className="flex gap-2 items-center border border-slate-700 rounded-full py-1 px-3">
+                    <div className="flex gap-2 items-center border border-slate-700 rounded-full py-1 px-3 md:rounded-lg md:w-2/5">
                         <h1>Sort by</h1>
                         <FontAwesomeIcon icon={faArrowDown}style={{width:"13px", height:"20px"}} />
                     </div>

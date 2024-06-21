@@ -50,17 +50,18 @@
         background-color: aqua;
     }
     .main .logo img{
-        width: 60px;
-        height: 60px;
+        width: 68px;
+        height: 68px;
     }
     .button-div{
-        width: 60px;
+        width: 65px;
+        /* height: 50px; */
     }
 }
 @media screen and (max-width: 767px){
     .main .logo img{
-        width: 50px;
-        height: 50px;
+        width: 65px;
+        height: 65px;
     }
     .nav{
         display: none;
@@ -68,14 +69,14 @@
 }
 @media screen and (max-width: 600px){
     .main .logo img{
-        width: 40px;
-        height: 40px;
+        width: 60px;
+        height: 60px;
     }
     .button-div{
         width: 65px;
     }
     .logo-text{
-        font-size: 20px;
+        font-size: 30px;
     }
 }
 /* @media screen and (max-width: 600px){

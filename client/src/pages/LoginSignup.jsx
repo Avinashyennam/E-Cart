@@ -59,7 +59,7 @@ const Login = ()=>{
                 <div className="text-3xl">
                     <h1>Welcome to E-CART</h1>
                 </div>
-                <div className="w-2/5 sm:w-full">
+                <div className="sm: w-4/5 2xl:w-2/5">
 
                     {(login == true)?
                     <div>

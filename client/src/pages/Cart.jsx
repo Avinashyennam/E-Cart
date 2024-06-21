@@ -67,9 +67,9 @@ const Cart = () => {
                         </div>
                         <div className="flex flex-col gap-4">
                             <h1 className="text-xl">Have any promo code? Enter here</h1>
-                            <div className="flex gap-2">
-                                <input type="text" name="promo" id="promo" placeholder="Enter Promo Code" className="border border-black px-2 md:w-1/2"/>
-                                <button className="bg-[#fe3f3b] px-3 py-1 text-xl rounded text-white">Submit</button>
+                            <div className="flex gap-2 lg:flex-col lg:items-center">
+                                <input type="text" name="promo" id="promo" placeholder="Enter Promo Code" className="border border-black px-2 md:w-4/5"/>
+                                <button className="bg-[#fe3f3b] px-3 py-1 text-xl rounded text-white lg:w-2/5">Submit</button>
                             </div>
                         </div>
                     {/* </div> */}

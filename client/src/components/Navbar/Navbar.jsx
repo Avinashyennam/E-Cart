@@ -12,7 +12,7 @@ let Navbar = ()=>{
             <div className='main flex gap-4 justify-between items-center px-4'>
                 <div className='logo flex gap-1 justify-around items-center'>
                     <Link to='/'><img src='/logo.png' alt='not found' className='w-20 h-20' onClick={()=> setMenu("shop")}/></Link>
-                    <h1 className='logo-text text-4xl font-bold sm:text-3xl'>Cart</h1>
+                    <h1 className='logo-text text-4xl font-bold sm:text-4xl'>Cart</h1>
                 </div>
                 <div className='nav'>
                     <ul className='nav-menu flex gap-12 justify-between'>
