@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const path = require("path");
 const multer = require("multer");
+const Product = require("./db");
 app.use(express.json());
 app.use(cors());
 
@@ -33,4 +34,21 @@ app.get("/",(req, res)=>{
     res.send("hello");
 });
 
+// add product
+app.post("/addProduct",async (req, res)=>{
+    const product = {
+        id: req.body.id,
+        name: req.body.name,
+        image: req.body.image,
+        old_price: req.body.old_price,
+        new_price: req.body.new_price,
+        category: req.body.category
+    };
+    console.log(product);
+    await Product.insertMany(product);
+    res.json({
+        success: true,
+        name: req.body.name
+    })
+})
 app.listen(5000,()=> console.log(`server is running at port ${port}`));
