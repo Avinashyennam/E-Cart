@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
@@ -7,15 +7,16 @@ import Home from './pages/Home';
 import Login from './pages/LoginSignup'
 import Cart from './pages/Cart'
 import Product from './pages/Product';
+import Admin from './pages/Admin'
+import Protected from './components/Protected'
 import ShopCategory from './pages/ShopCategory'
-// import mens_banner from './components/assets/mens_banner.jpg'
-// import women_banner from './components/assets/women_banner2.jpg';
-// import women_banner from './components/assets/banner.jpg';
-// import banner2 from './components/assets/banner2.jpg'
 import women_banner from './components/assets/women_banner.png';
 import men_banner from './components/assets/men_banner.png';
 import kids_banner from './components/assets/kids_banner.png';
+import { ShopContext } from './context/ShopContext'
 function App() {
+
+  const {isAdmin} = useContext(ShopContext);
 
   const womenBg = '#c26228';
   const womenBannerText = "Unleash Your Inner Fashionista! Exclusive Women's Wear"
@@ -44,6 +45,13 @@ function App() {
           <Route path='/cart' element = {<Cart />} />
           <Route path='/product' element = {<Product />}>
             <Route path=':productId' element = {<Product />} />
+          </Route>
+          {/* {
+            (isAdmin === true)?
+              <Route path='/admin' element={<Admin />} />:<></>
+          } */}
+          <Route element={<Protected />}>
+            <Route path='/admin' element={<Admin />} />
           </Route>
         </Routes>
         <Footer />
