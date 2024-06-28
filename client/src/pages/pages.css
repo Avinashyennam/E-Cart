@@ -9,3 +9,19 @@
     padding: 10px;
     /* auto-c */
 }
+
+.admin-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+.box{
+    display: flex;
+    column-gap: 10px;
+    /* border: 1px solid red; */
+}
+.inner-box{
+    border: 1px solid red;
+    padding: 15px;
+}
