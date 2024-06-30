@@ -1,9 +1,15 @@
-form{
+.product-info{
     display: flex;
     flex-direction: column;
     row-gap: 20px;
 }
-form input{
+form{
+    display: flex;
+    flex-direction: column;
+    /* display: grid; */
+    row-gap: 20px;
+}
+form input, select{
     border: 1px solid black;
     padding: 5px 10px;
     font-size: 20px;
@@ -11,5 +17,35 @@ form input{
 }
 .col-gap{
     display: flex;
+    justify-content: space-between;
     column-gap: 20px;
+}
+.flex-col{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.flex-col label{
+    font-size: 18px;
+}
+.buttons{
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+    font-size: 20px;
+}
+.add{
+    background-color: #3df730;
+    padding: 6px 12px;
+    border-radius: 6px;
+    width: 100px;
+    color: black;
+}
+.remove{
+    background-color: #eb423f;
+    padding: 6px 12px;
+    border-radius: 6px;
+    width: 100px;
+    color: white;
 }
