@@ -6,6 +6,7 @@ const ListProducts = ()=>{
             <div>
                 <table cellSpacing={20}>
                     <tr>
+                        <th>sno</th>
                         <th>Product</th>
                         <th>Name</th>
                         <th>Category</th>
@@ -14,6 +15,7 @@ const ListProducts = ()=>{
                         <th>New Price</th>
                     </tr>
                     <tr>
+                        <td>1</td>
                         <td>
                             <img src='/smpl.jpg' alt='not found' width="100" height="200"/>
                         </td>
@@ -24,6 +26,7 @@ const ListProducts = ()=>{
                         <td>799</td>
                     </tr>
                     <tr>
+                        <td>2</td>
                         <td>
                             <img src='/img1.jpg' alt='not found' width="100" height="200"/>
                         </td>

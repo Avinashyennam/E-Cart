@@ -1,0 +1,31 @@
+.delete{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+}
+.delete .heading{
+    font-size: 25px;
+    font-weight: 600;
+
+}
+.delete .flex-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.delete form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.delete form label{
+    font-size: 20px;
+}
+.delete button{
+    background-color: #eb423f;
+    padding: 6px 12px;
+    border-radius: 6px;
+    width: 100px;
+    color: white;
+}

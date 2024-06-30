@@ -12,6 +12,6 @@ th, td{
     padding: 20px;
     font-size: 18px;
 }
-table tr td:nth-child(2){
-    width: 170px;
+table tr td:nth-child(3){
+    width: 250px;
 }
