@@ -20,7 +20,7 @@ form input, select{
     justify-content: space-between;
     column-gap: 20px;
 }
-.flex-col{
+.product-info .flex-col{
     display: flex;
     flex-direction: column;
     width: 50%;

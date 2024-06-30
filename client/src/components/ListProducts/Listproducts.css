@@ -1,0 +1,17 @@
+table, td{
+    /* border: 1px solid red; */
+}
+table tr{
+    box-shadow: rgba(173, 190, 207, 0.2) 0px 8px 24px;
+}
+table{
+    border-spacing: 5px;
+    /* padding: ; */
+}
+th, td{
+    padding: 20px;
+    font-size: 18px;
+}
+table tr td:nth-child(2){
+    width: 170px;
+}

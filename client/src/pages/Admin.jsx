@@ -1,5 +1,6 @@
 import './pages.css'
 import AddProduct from '../components/AddProduct/Add';
+import ListProducts from '../components/ListProducts/ListProducts';
 const Admin = ()=>{
     return(
         <div className='admin-container'>
@@ -19,6 +20,7 @@ const Admin = ()=>{
                 </div>
             </div>
             {/* <AddProduct /> */}
+            <ListProducts />
         </div>
     )
 }
