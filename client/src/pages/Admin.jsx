@@ -1,4 +1,5 @@
 import './pages.css'
+import AddProduct from '../components/AddProduct/Add';
 const Admin = ()=>{
     return(
         <div className='admin-container'>
@@ -14,6 +15,7 @@ const Admin = ()=>{
                     <h1>List</h1>
                 </div>
             </div>
+            <AddProduct />
         </div>
     )
 }

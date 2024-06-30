@@ -1,0 +1,15 @@
+form{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+form input{
+    border: 1px solid black;
+    padding: 5px 10px;
+    font-size: 20px;
+    border-radius: 6px;
+}
+.col-gap{
+    display: flex;
+    column-gap: 20px;
+}

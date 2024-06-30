@@ -12,9 +12,11 @@
 
 .admin-container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 80vh;
+    border-top: 1px solid gray;
 }
 .box{
     display: flex;
