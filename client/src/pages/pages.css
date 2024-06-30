@@ -15,15 +15,29 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    /* height: 80vh; */
     border-top: 1px solid gray;
+    padding: 80px;
+    row-gap: 60px;
 }
 .box{
     display: flex;
-    column-gap: 10px;
+    column-gap: 30px;
     /* border: 1px solid red; */
 }
 .inner-box{
-    border: 1px solid red;
-    padding: 15px;
+    padding: 5px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(111, 124, 137, 0.2) 0px 8px 24px;
+}
+.inner-box h1{
+    font-size: 20px;
+}
+.inner-box img{
+    width: 140px;
+    height: 120px;
 }
