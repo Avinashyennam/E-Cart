@@ -14,6 +14,7 @@ form input, select{
     padding: 5px 10px;
     font-size: 20px;
     border-radius: 6px;
+    width: 100%;
 }
 .col-gap{
     display: flex;
@@ -26,9 +27,11 @@ form input, select{
     width: 50%;
 }
 
+
 .flex-col label{
     font-size: 18px;
 }
+
 .buttons{
     display: flex;
     justify-content: center;
