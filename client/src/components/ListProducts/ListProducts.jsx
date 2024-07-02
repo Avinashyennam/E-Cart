@@ -1,5 +1,10 @@
+import { ShopContext } from '../../context/ShopContext';
 import './Listproducts.css'
+import { useContext, useState } from 'react';
 const ListProducts = ()=>{
+
+    const {products} = useContext(ShopContext);
+    console.log(products);
     return(
         <div className="list-products">
             <div>All Products</div>
@@ -36,6 +41,24 @@ const ListProducts = ()=>{
                         <td>999</td>
                         <td>799</td>
                     </tr>
+
+                    {
+                        products.map((item, id)=>{
+                            return(
+                                <tr key={id}>
+                                    <td>{id}</td>
+                                    <td>
+                                        <img src={item.image} alt='not found' width="100" height="200"/>
+                                    </td>
+                                    <td>{item.name}</td>
+                                    <td>{item.category}</td>
+                                    <td>9</td>
+                                    <td>{item.old_price}</td>
+                                    <td>{item.new_price}</td>
+                                </tr>
+                            )
+                        })
+                    }
                 </table>
             </div>
         </div>

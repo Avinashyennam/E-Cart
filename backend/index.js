@@ -6,9 +6,14 @@ const cors = require("cors");
 const path = require("path");
 const multer = require("multer");
 const Product = require("./db");
-app.use(express.json());
-app.use(cors());
 
+const corsOption = {
+    origin: "http://localhost:5173",
+    methods: "GET, PUT, POST, DELETE, HEAD, PATCH",
+    credentials: true
+} 
+app.use(cors(corsOption));
+app.use(express.json());
 // setup storage for uploaded files
 const storage = multer.diskStorage({
     destination: './upload/images',
@@ -81,6 +86,6 @@ app.delete("/removeProduct", async (req,res)=>{
 app.get("/allProducts", async (req, res)=>{
     const products = await Product.find({});
     console.log("All products fetched");
-    res.send(products);
+    res.json(products);
 })
 app.listen(5000, () => console.log(`server is running at port ${port}`));

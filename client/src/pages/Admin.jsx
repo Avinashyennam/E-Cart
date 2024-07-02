@@ -1,11 +1,14 @@
 import './pages.css'
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import AddProduct from '../components/AddProduct/Add';
 import ListProducts from '../components/ListProducts/ListProducts';
 import DeleteProduct from '../components/DeleteProd/DeleteProduct';
+import { ShopContext } from '../context/ShopContext';
 const Admin = () => {
 
+
     const [view, setView] = useState("");
+    const {products, setProducts} = useContext(ShopContext);
     const handleAdd = () => {
         setView("add");
     }
@@ -14,7 +17,27 @@ const Admin = () => {
     }
     const handleList = () => {
         setView("list");
+        // fetch('http://localhost:5000/allProducts')
+        // .then(response => response.json())
+        // .then((data)=>{
+        //     console.log(data);
+        //     setProducts(data);
+        // })
+        // .catch(error => console.error('Error fetching data:', error));
     }
+
+    const handleProducts = ()=>{
+        fetch('http://localhost:5000/allProducts')
+        .then(response => response.json())
+        .then((data)=>{
+            console.log(data);
+            setProducts(data);
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    }
+    useEffect(()=>{
+        handleProducts();
+    },[]);
     return (
         <div className='admin-container'>
             <div className="box">

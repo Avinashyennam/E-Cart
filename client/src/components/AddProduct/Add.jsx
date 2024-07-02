@@ -7,8 +7,7 @@ const AddProduct = () => {
         old_price:"",
         new_price:"",
         discount:"",
-        category:"",
-        image:"",
+        category:""
     })
 
     const handleChange = (e)=>{
@@ -35,18 +34,16 @@ const AddProduct = () => {
                                 <label>Enter old price</label>
                                 <input type="number" name="old_price" value={product.old_price} id="" placeholder="Enter old price" onChange={handleChange} />
                             </div>
-
                         </div>
                         <div className='col-gap'>
-                        <div className='flex-col'>
+                            <div className='flex-col'>
                                 <label>Enter discount</label>
                                 <input type="number" name="discount" value={product.discount} id="" placeholder='Enter discount' onChange={handleChange}/>
                             </div>
                             <div className='flex-col'>
                                 <label>Enter new price</label>
                                 <input type="number" name="new_price" value={product.new_price} id="" placeholder="Enter new price" onChange={handleChange}/>
-                            </div>
-                            
+                            </div>                           
                         </div>
                         <div className='col-gap'>
                             <div className='flex-col'>
@@ -54,14 +51,8 @@ const AddProduct = () => {
                                 <select name="category" value={product.category} id="" onChange={handleChange}>
                                     <option value="">kid</option>
                                     <option value="">men</option>
-                                    <option value="">women</option>
-                                    
+                                    <option value="">women</option>                    
                                 </select>
-                                {/* <ul>
-                                    <li>Kid</li>
-                                    <li>men</li>
-                                    <li>women</li>
-                                </ul> */}
                             </div>
                         </div>
                         <input type="file" accept='image/*' name="" id=""/>
