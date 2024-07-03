@@ -1,10 +1,25 @@
 import { ShopContext } from '../../context/ShopContext';
 import './Listproducts.css'
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 const ListProducts = ()=>{
 
-    const {products} = useContext(ShopContext);
-    console.log(products);
+    // const {products} = useContext(ShopContext);
+    const [products, setProducts] = useState([]);
+    const handleProducts = async ()=>{
+        await fetch("http://localhost:5000/allProducts")
+        .then(response => response.json())
+        .then((data)=>{
+            console.log(data);
+            setProducts(data);
+        })
+        .catch(error => console.error('Error fetching data:', error));
+    }
+
+    useEffect(()=>{
+        handleProducts();
+        // console.log(products);
+    },[]);
+    // console.log(products);
     return(
         <div className="list-products">
             <div>All Products</div>

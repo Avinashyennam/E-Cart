@@ -4,11 +4,17 @@ const AddProduct = () => {
 
     const [product, setProduct] = useState({
         name:"",
+        image:"",
         old_price:"",
         new_price:"",
         discount:"",
-        category:""
+        category:"women"
     })
+    const [image, setImage] = useState(false);
+
+    const imageHandler = (e)=>{
+        setImage(e.target.files[0])
+    }
 
     const handleChange = (e)=>{
         const {name, value} = e.target;
@@ -17,9 +23,39 @@ const AddProduct = () => {
             [name]:value
         });
     }
-    useEffect(()=>{
-        console.log(product)
-    },[product]);
+
+    const addProduct = async ()=>{
+        console.log("Im in addProduct function");
+        let responseData;
+        let item = product;
+        let formData = new FormData();
+        formData.append('product', image);
+        console.log(formData);
+        await fetch("http://localhost:5000/upload",{
+            method: 'POST',
+            headers:{
+                Accept: "application/json"
+            },
+            body: formData
+        })
+        .then(response => response.json())
+        .then((data)=> responseData = data);
+
+        if(responseData.success){
+            item.image = responseData.img_url;
+            console.log(item);
+            await fetch("http://localhost:5000/addProduct",{
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(item)
+            })
+            .then(response => response.json())
+            .then((data)=> console.log(data));
+        }
+    }
+
     return (
         <div>
             <div className="product-info">
@@ -49,17 +85,17 @@ const AddProduct = () => {
                             <div className='flex-col'>
                                 <label>select category</label>
                                 <select name="category" value={product.category} id="" onChange={handleChange}>
-                                    <option value="">kid</option>
-                                    <option value="">men</option>
-                                    <option value="">women</option>                    
+                                    <option value="kid">kid</option>
+                                    <option value="men">men</option>
+                                    <option value="women">women</option>                    
                                 </select>
                             </div>
                         </div>
-                        <input type="file" accept='image/*' name="" id=""/>
+                        <input type="file" accept='image/*' onChange={imageHandler} name="image" id=""/>
                     </form>
                 </div>
                 <div className='buttons'>
-                    <button className='add'>Add</button>
+                    <button type='submit' className='add' onClick={()=> addProduct()}>Add</button>
                     <button className='remove'>Remove</button>
                 </div>
             </div>

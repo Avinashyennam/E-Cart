@@ -8,7 +8,7 @@ const Admin = () => {
 
 
     const [view, setView] = useState("");
-    const {products, setProducts} = useContext(ShopContext);
+    // const {products, setProducts} = useContext(ShopContext);
     const handleAdd = () => {
         setView("add");
     }
@@ -26,18 +26,18 @@ const Admin = () => {
         // .catch(error => console.error('Error fetching data:', error));
     }
 
-    const handleProducts = ()=>{
-        fetch('http://localhost:5000/allProducts')
-        .then(response => response.json())
-        .then((data)=>{
-            console.log(data);
-            setProducts(data);
-        })
-        .catch(error => console.error('Error fetching data:', error));
-    }
-    useEffect(()=>{
-        handleProducts();
-    },[]);
+    // const handleProducts = ()=>{
+    //     fetch('http://localhost:5000/allProducts')
+    //     .then(response => response.json())
+    //     .then((data)=>{
+    //         console.log(data);
+    //         setProducts(data);
+    //     })
+    //     .catch(error => console.error('Error fetching data:', error));
+    // }
+    // useEffect(()=>{
+    //     handleProducts();
+    // },[]);
     return (
         <div className='admin-container'>
             <div className="box">
