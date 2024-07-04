@@ -25,7 +25,7 @@ const AddProduct = () => {
     }
 
     const addProduct = async ()=>{
-        console.log("Im in addProduct function");
+        // console.log("Im in addProduct function");
         let responseData;
         let item = product;
         let formData = new FormData();

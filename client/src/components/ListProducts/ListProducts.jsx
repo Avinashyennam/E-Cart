@@ -34,7 +34,7 @@ const ListProducts = ()=>{
                         <th>Old Price</th>
                         <th>New Price</th>
                     </tr>
-                    <tr>
+                    {/* <tr>
                         <td>1</td>
                         <td>
                             <img src='/smpl.jpg' alt='not found' width="100" height="200"/>
@@ -55,13 +55,13 @@ const ListProducts = ()=>{
                         <td>8</td>
                         <td>999</td>
                         <td>799</td>
-                    </tr>
+                    </tr> */}
 
                     {
                         products.map((item, id)=>{
                             return(
                                 <tr key={id}>
-                                    <td>{id}</td>
+                                    <td>{item.id}</td>
                                     <td>
                                         <img src={item.image} alt='not found' width="100" height="200"/>
                                     </td>
