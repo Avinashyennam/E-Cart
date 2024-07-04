@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const path = require("path");
 const multer = require("multer");
-const Product = require("./db");
+const {Product, User} = require("./db");
 
 const corsOption = {
     origin: "http://localhost:5173",
@@ -39,12 +39,7 @@ app.get("/", (req, res) => {
     res.send("hello");
 });
 
-
-// const items = Product.find({});
-//     console.log(items);
-// add product
 app.post("/addProduct", async (req, res) => {
-
     // for generating default id for product
     const items = await Product.find({});
     let id;
@@ -87,4 +82,27 @@ app.get("/allProducts", async (req, res)=>{
     console.log("All products fetched");
     res.json(products);
 })
+
+// signup of user
+app.post("/signup", async (req, res)=>{
+    const {name, email, password} = req.body;
+    const checkUser = await User.findOne({ email: email });
+    console.log(checkUser);
+    if(checkUser != null){
+        return res.status(404).send("User already exists");
+    }
+    const newUser = {
+        name: name,
+        email: email,
+        password: password,
+        category: "user",
+    }
+    const result = await User.insertMany(newUser);
+    return res.status(201).json({
+        user: result
+    });
+})
+
+// creating login of user
+
 app.listen(5000, () => console.log(`server is running at port ${port}`));

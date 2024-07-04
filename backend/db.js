@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 mongoose.connect("mongodb+srv://avinashyennam02:3zeZGnl3u5bASVgR@cluster0.esoszpn.mongodb.net/Ecommerce");
 
+// creating product schema
 const product = new mongoose.Schema({
     id:{
         type: Number,
@@ -36,5 +37,27 @@ const product = new mongoose.Schema({
     }
 });
 
+// creating user schema
+const user = new mongoose.Schema({
+    name:{
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    category:{
+        type: String,
+        default: "user",
+    } 
+})
+
+const User = new mongoose.model("Users", user);
 const Product = new mongoose.model("Products", product);
-module.exports = Product;
+module.exports = {Product, User};
