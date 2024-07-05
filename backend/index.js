@@ -104,5 +104,43 @@ app.post("/signup", async (req, res)=>{
 })
 
 // creating login of user
+app.post("/login", async (req, res)=>{
+    const {email, password, category} = req.body;
+    const checkUser = await User.findOne({
+        $and:[
+            {email: email},
+            {password: password},
+            {category: category}
+        ]
+    });
+    console.log(checkUser);
+    if(checkUser == null){
+        return res.status(404).send("User not found");
+    }
+    return res.status(200).json({
+        user: checkUser,
+        ok: true
+    });
+})
+
+//login for admin
+app.post("/admin", async (req, res)=>{
+    const {name, email, password} = req.body;
+    const checkUser = await User.findOne({ email: email });
+    console.log(checkUser);
+    if(checkUser != null){
+        return res.status(404).send("User already exists");
+    }
+    const newUser = {
+        name: name,
+        email: email,
+        password: password,
+        category: "user",
+    }
+    const result = await User.insertMany(newUser);
+    return res.status(201).json({
+        user: result
+    });
+})
 
 app.listen(5000, () => console.log(`server is running at port ${port}`));

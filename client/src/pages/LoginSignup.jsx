@@ -21,21 +21,7 @@ const Login = () => {
         e.preventDefault();
         try {
             if (loginData.category === 'Admin') {
-                const response = await fetch("", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(loginData)
-                })
-                if (response.ok) {
-                    console.log("Login Successful")
-                    setIsAdmin(true);
-                    console.log(isAdmin);
-                }
-            }
-            else {
-                const response = await fetch("", {
+                const response = await fetch("http://localhost:5000/login", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -44,6 +30,22 @@ const Login = () => {
                 })
                 if (response.ok) {
                     console.log("Login Successful");
+                    console.log(response.user);
+                    setIsAdmin(true);
+                    console.log(isAdmin);
+                }
+            }
+            else {
+                const response = await fetch("http://localhost:5000/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(loginData)
+                })
+                if (response.ok) {
+                    console.log("Login Successful");
+                    console.log(response.user);
                     setIsAdmin(false);
                     console.log(isAdmin);
                 }
@@ -81,14 +83,14 @@ const Login = () => {
 
                     {(login == true) ?
                         <div>
-                            <form className="login-form flex flex-col justify-center items-center gap-4 border p-10 rounded-lg sm:p-4" onSubmit={handleLogin}>
+                            <form className="login-form flex flex-col justify-center items-center gap-4 border p-10 rounded-lg sm:p-4">
                                 <input type="email" name="email" value={loginData.email} placeholder="Enter Email" onChange={(e) => setLoginData(e.target.value)} />
                                 <input type="password" name="password" value={loginData.password} placeholder="Enter Password" onChange={(e) => setLoginData(e.target.value)} />
                                 <div className="flex gap-2">
                                     <label><input type="radio" value="Admin" name="category" onChange={(e) => setLoginData(e.target.value)} /> Admin</label>
                                     <label><input type="radio" value="User" name="category" onChange={(e) => setLoginData(e.target.value)} />User</label>
                                 </div>
-                                <button className="bg-white text-black text-xl w-28 p-1 rounded-lg">Login</button>
+                                <button type="submit" className="bg-white text-black text-xl w-28 p-1 rounded-lg" onClick={handleLogin}>Login</button>
                                 <h1 className="text-xl">Didn't have an account? <span className="text-blue-700 cursor-pointer" onClick={() => setLogin(!login)}>Click </span>here to Signup</h1>
                             </form>
                         </div> :

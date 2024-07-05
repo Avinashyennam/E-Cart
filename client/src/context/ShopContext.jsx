@@ -15,7 +15,7 @@ const ShopContextProvider = (props)=>{
     const [cartItems, setCartItems] = useState(getDefaultCart);
     const [count, setCount] = useState(0);
     const [menu, setMenu] = useState("shop");
-    const [isAdmin, setIsAdmin] = useState(true);
+    const [isAdmin, setIsAdmin] = useState(false);
     // const [products, setProducts] = useState();
 
     const addToCart = (itemId)=>{
