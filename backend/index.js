@@ -5,13 +5,14 @@ const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const path = require("path");
 const multer = require("multer");
-const {Product, User} = require("./db");
+const { Product, User } = require("./db");
+const SECRET_KEY = "qwertyuioplkjhg"
 
 const corsOption = {
     origin: "http://localhost:5173",
     methods: "GET, PUT, POST, DELETE, HEAD, PATCH",
     credentials: true
-} 
+}
 app.use(cors(corsOption));
 app.use(express.json());
 // setup storage for uploaded files
@@ -67,8 +68,8 @@ app.post("/addProduct", async (req, res) => {
 })
 
 // delete product
-app.delete("/removeProduct", async (req,res)=>{
-    await Product.findOneAndDelete({ id: req.body.id});
+app.delete("/removeProduct", async (req, res) => {
+    await Product.findOneAndDelete({ id: req.body.id });
     console.log("removed");
     res.json({
         success: true,
@@ -77,18 +78,18 @@ app.delete("/removeProduct", async (req,res)=>{
 })
 
 // get all products
-app.get("/allProducts", async (req, res)=>{
+app.get("/allProducts", async (req, res) => {
     const products = await Product.find({});
     console.log("All products fetched");
     res.json(products);
 })
 
 // signup of user
-app.post("/signup", async (req, res)=>{
-    const {name, email, password} = req.body;
+app.post("/signup", async (req, res) => {
+    const { name, email, password } = req.body;
     const checkUser = await User.findOne({ email: email });
     console.log(checkUser);
-    if(checkUser != null){
+    if (checkUser != null) {
         return res.status(404).send("User already exists");
     }
     const newUser = {
@@ -104,31 +105,44 @@ app.post("/signup", async (req, res)=>{
 })
 
 // creating login of user
-app.post("/login", async (req, res)=>{
-    const {email, password, category} = req.body;
+app.post("/login", async (req, res) => {
+    const { email, password, category } = req.body;
     const checkUser = await User.findOne({
-        $and:[
-            {email: email},
-            {password: password},
-            {category: category}
+        $and: [
+            { email: email },
+            { password: password },
+            { category: category }
         ]
     });
-    console.log(checkUser);
-    if(checkUser == null){
+    //console.log(checkUser);
+    if (checkUser == null) {
         return res.status(404).send("User not found");
     }
+    const token = jwt.sign(
+        {
+            name: checkUser.name,
+            id: checkUser._id
+        },
+        SECRET_KEY,
+        {expiresIn: "1h"}
+    );
     return res.status(200).json({
-        user: checkUser,
-        ok: true
+        userId: checkUser._id,
+        userEmail: checkUser.email,
+        token: token,
+        //user: checkUser,
+        ok: true,
+        success: true,
+
     });
 })
 
 //login for admin
-app.post("/admin", async (req, res)=>{
-    const {name, email, password} = req.body;
+app.post("/admin", async (req, res) => {
+    const { name, email, password } = req.body;
     const checkUser = await User.findOne({ email: email });
     console.log(checkUser);
-    if(checkUser != null){
+    if (checkUser != null) {
         return res.status(404).send("User already exists");
     }
     const newUser = {

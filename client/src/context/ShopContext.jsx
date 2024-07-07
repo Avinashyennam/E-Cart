@@ -16,6 +16,8 @@ const ShopContextProvider = (props)=>{
     const [count, setCount] = useState(0);
     const [menu, setMenu] = useState("shop");
     const [isAdmin, setIsAdmin] = useState(false);
+    const [isLogin, setIsLogin] = useState(false);
+    const [token, setToken] = useState(localStorage.getItem("site") || "");
     // const [products, setProducts] = useState();
 
     const addToCart = (itemId)=>{
@@ -44,9 +46,16 @@ const ShopContextProvider = (props)=>{
         return totalAmount;
     }
 
+    const logout = () => {
+        setToken("");
+        setIsLogin(false);
+        setIsAdmin(false);
+        localStorage.removeItem("site");
+    }
 
 
-    const contextValue = {all_products, cartItems, addToCart, removeFromCart, count, getTotalAmount, removed, menu, setMenu, isAdmin, setIsAdmin}
+
+    const contextValue = {all_products, cartItems, addToCart, removeFromCart, count, getTotalAmount, removed, menu, setMenu, isAdmin, setIsAdmin, isLogin, setIsLogin, logout, token, setToken}
     
     return(
         <ShopContext.Provider value={contextValue}>
