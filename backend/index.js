@@ -88,9 +88,9 @@ app.get("/allProducts", async (req, res) => {
 app.post("/signup", async (req, res) => {
     const { name, email, password } = req.body;
     const checkUser = await User.findOne({ email: email });
-    console.log(checkUser);
+    //console.log(checkUser);
     if (checkUser != null) {
-        return res.status(404).send("User already exists");
+        return res.status(404).json({message: "User already exists"});
     }
     const newUser = {
         name: name,
@@ -98,9 +98,23 @@ app.post("/signup", async (req, res) => {
         password: password,
         category: "user",
     }
+    // it inserts and returns an array containing objects(result)
     const result = await User.insertMany(newUser);
+    //console.log(result);
+    const token = jwt.sign(
+        {
+            name: result.name,
+            id: result._id
+        },
+        SECRET_KEY,
+        {expiresIn: "1h"}
+    );
     return res.status(201).json({
-        user: result
+        userId: result[0]._id,
+        userEmail: result[0].email,
+        token: token,
+        ok: true,
+        success: true,
     });
 })
 
@@ -114,9 +128,9 @@ app.post("/login", async (req, res) => {
             { category: category }
         ]
     });
-    //console.log(checkUser);
+    console.log(checkUser);
     if (checkUser == null) {
-        return res.status(404).send("User not found");
+        return res.status(404).json({message: "user not found"});
     }
     const token = jwt.sign(
         {
@@ -130,7 +144,6 @@ app.post("/login", async (req, res) => {
         userId: checkUser._id,
         userEmail: checkUser.email,
         token: token,
-        //user: checkUser,
         ok: true,
         success: true,
 

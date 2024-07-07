@@ -26,88 +26,76 @@ const Login = () => {
             ...loginData,
             [name]:value,
         });
-        console.log(loginData);
+        //console.log(loginData);
     }
     
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
             if (loginData.category === 'admin') {
-                await fetch("http://localhost:5000/login", {
+                let response = await fetch("http://localhost:5000/login", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify(loginData)
                 })
-                .then(response => response.json())
-                .then((data)=>{
-                    console.log(data);
-                    localStorage.setItem("site", data.token);
-                    console.log("signup Successful");
-                    setIsLogin(true);
-                    console.log("is login inside of fetch ",isLogin);
+                if (response.ok) {
+                    console.log("Login Successful");
+                    let responseData = await response.json();
+                    //console.log(responseData);
+                    localStorage.setItem("site", responseData.token);
                     setIsAdmin(true);
-                    console.log(isAdmin);
-                })
-                // if (response.ok) {
-                //     console.log("Login Successful");
-                //     console.log(response.user);
-                //     setIsAdmin(true);
-                //     setIsLogin(true);
-                //     console.log(isLogin);
-                //     console.log(isAdmin);
-                // }
+                    setIsLogin(true);
+                }
+                else{
+                    alert("User not found");
+                    let responseData = await response.json();
+                    console.log(responseData);
+                }
             }
             else {
 
-                await fetch("http://localhost:5000/login", {
+                let response = await fetch("http://localhost:5000/login", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify(loginData)
                 })
-                .then(response => response.json())
-                .then((data)=>{
-                    console.log(data);
-                    localStorage.setItem("site", data.token);
-                    console.log("signup Successful");
+                if (response.ok) {
+                    console.log("Login successful");
+                    let responseData = await response.json();
+                    localStorage.setItem("site", responseData.token);
                     setIsLogin(true);
-                    console.log("is login inside of fetch ",isLogin);
-                    console.log(isAdmin);
-                    //window.location.href = '/';
-                })
-                // let response = await fetch("http://localhost:5000/login", {
-                //     method: "POST",
-                //     headers: {
-                //         "Content-Type": "application/json"
-                //     },
-                //     body: JSON.stringify(loginData)
-                // })
-                // response.then(resp=> resp.json())
-                // .then((data)=> console.log(data));
-                // if (response.ok) {
-                //     console.log(response.ok);
-                //     console.log("Login Successful");
-                //     console.log(response);
-                //     setIsAdmin(false);
-                //     console.log(isAdmin);
-                // }
+                }
+                else{
+                    alert("User not found");
+                    let responseData = await response.json();
+                    console.log(responseData);
+                }
             }
         } catch (error) {
             console.log(error.message);
         }
     }
-
     useEffect(()=>{
-        console.log("is login inside of useEffect ",isLogin);
-    },[isLogin]);
+        console.log(loginData);
+    },[loginData]);
+
+    const handleSignupChange = (e)=>{
+        let name = e.target.name;
+        let value = e.target.value;
+        setSignupdata({
+            ...signupdata,
+            [name]: value,
+        })
+    }
 
     const handleSignUp = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("", {
+            const response = await fetch("http://localhost:5000/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -115,16 +103,26 @@ const Login = () => {
                 body: JSON.stringify(signupdata)
             })
             if (response.ok) {
-                console.log("Login Successful")
+                console.log("signup Successful");
+                let responseData = await response.json();
+                //console.log(responseData);
+                localStorage.setItem("site", responseData.token);
+                setIsLogin(true);
+            }
+            else{
+                alert("User already exists");
+                let responseData = await response.json();
+                console.log(responseData);
             }
         } catch (error) {
             console.log(error.message);
         }
     }
 
+    
     useEffect(()=>{
-        console.log(loginData);
-    },[loginData]);
+        console.log("is login inside of useEffect ",isLogin);
+    },[isLogin]);
 
     return (
         <>
@@ -146,12 +144,13 @@ const Login = () => {
                                 <button type="button" className="bg-white text-black text-xl w-28 p-1 rounded-lg" onClick={handleLogin}>Login</button>
                                 <h1 className="text-xl">Didn't have an account? <span className="text-blue-700 cursor-pointer" onClick={() => setLogin(!viewlogin)}>Click </span>here to Signup</h1>
                             </form>
-                        </div> :
+                        </div>
+                        :
                         <div>
                             <form className="login-form flex flex-col justify-center items-center gap-4 border p-10 rounded-lg sm:p-4" onSubmit={handleSignUp}>
-                                <input type="text" name="name" value={signupdata.name} placeholder="Enter name" onChange={(e) => setSignupdata(e.target.value)} />
-                                <input type="email" name="email" value={signupdata.email} placeholder="Enter Email" onChange={(e) => setSignupdata(e.target.value)} />
-                                <input type="password" name="password" value={signupdata.password} placeholder="Enter Password" onChange={(e) => setSignupdata(e.target.value)} />
+                                <input type="text" name="name" value={signupdata.name} placeholder="Enter name" onChange={handleSignupChange} />
+                                <input type="email" name="email" value={signupdata.email} placeholder="Enter Email" onChange={handleSignupChange} />
+                                <input type="password" name="password" value={signupdata.password} placeholder="Enter Password" onChange={handleSignupChange} />
                                 <button className="bg-white text-black text-xl w-28 p-1 rounded-lg">Continue</button>
                                 <h1 className="text-xl">Already have an account? <span className="text-blue-700 cursor-pointer" onClick={() => setLogin(!viewlogin)}>Click </span>here to login</h1>
                             </form>
