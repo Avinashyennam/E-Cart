@@ -7,7 +7,7 @@ const ShopCategory = (props) => {
 
     const { all_products } = useContext(ShopContext)
     // const {all_items} = all_products.filter()
-    // console.log(all_products);
+    console.log(all_products);
 
     return (
         <>

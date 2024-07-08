@@ -47,7 +47,7 @@ const Login = () => {
                     localStorage.setItem("site", responseData.token);
                     setIsAdmin(true);
                     setIsLogin(true);
-                    window.location.replace("/");
+                    //window.location.replace("/");
                 }
                 else{
                     alert("User not found");

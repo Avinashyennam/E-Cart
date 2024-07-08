@@ -85,10 +85,10 @@ app.get("/allProducts", async (req, res) => {
 });
 
 // get newCollections
-app.get("/newCollection", async (req, res)=>{
+app.get("/newcollection", async (req, res)=>{
     const products = await Product.find({});
     console.log("new collection fetched");
-    const newCollection = products.slice(1).slice(-8);
+    const newCollection = products.slice(0).slice(-8);
     res.json(newCollection);
 })
 
@@ -191,4 +191,9 @@ app.post("/admin", async (req, res) => {
     });
 })
 
+//get all users
+app.get("/allusers", async (req, res)=>{
+    const users = await User.find({});
+    res.json(users);
+})
 app.listen(5000, () => console.log(`server is running at port ${port}`));
