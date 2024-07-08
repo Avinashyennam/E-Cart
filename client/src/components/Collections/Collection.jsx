@@ -1,8 +1,17 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import './Collection.css';
 import Item from "../Item/Item";
-import new_collection from '../assets/new_collection';
+//import new_collection from '../assets/new_collection';
 const Collection = ()=>{
+    
+    const [new_collection, setNewCollection] = useState([]);
+    useEffect(()=>{
+        fetch("http://localhost:5000/newCollection")
+        .then(response => response.json())
+        .then((data)=>{
+            setNewCollection(data);
+        })
+    },[])
     return(
         <>
             <div className="flex flex-col items-center p-8">

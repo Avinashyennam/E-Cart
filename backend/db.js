@@ -55,7 +55,14 @@ const user = new mongoose.Schema({
     category:{
         type: String,
         default: "user",
-    } 
+    },
+    cartData: {
+        type: Object
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
 })
 
 const User = new mongoose.model("Users", user);

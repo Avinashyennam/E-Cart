@@ -82,6 +82,22 @@ app.get("/allProducts", async (req, res) => {
     const products = await Product.find({});
     console.log("All products fetched");
     res.json(products);
+});
+
+// get newCollections
+app.get("/newCollection", async (req, res)=>{
+    const products = await Product.find({});
+    console.log("new collection fetched");
+    const newCollection = products.slice(1).slice(-8);
+    res.json(newCollection);
+})
+
+//get popular in women collections
+app.get("/popularinwomen", async (req, res)=>{
+    const products = await Product.find({category : "women"});
+    console.log("popular women collections fetched");
+    const popular_in_women = products.slice(0,4);
+    res.json(popular_in_women);
 })
 
 // signup of user
@@ -92,11 +108,16 @@ app.post("/signup", async (req, res) => {
     if (checkUser != null) {
         return res.status(404).json({message: "User already exists"});
     }
+    let cart = {};
+    for(let i=0; i<10; i++){
+        cart[i] = 0;
+    }
     const newUser = {
         name: name,
         email: email,
         password: password,
         category: "user",
+        cartData: cart
     }
     // it inserts and returns an array containing objects(result)
     const result = await User.insertMany(newUser);
