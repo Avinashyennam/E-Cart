@@ -16,14 +16,15 @@ const ShopContextProvider = (props)=>{
     const [count, setCount] = useState(0);
     const [menu, setMenu] = useState("shop");
     const [isAdmin, setIsAdmin] = useState(false);
-    const [isLogin, setIsLogin] = useState(false);
-    // if(localStorage.getItem("site")){
-    //     //const [isLogin, setIsLogin] = useState(true);
-    //     setIsLogin(true);
-    // }
+    const [isLogin, setIsLogin] = useState(() => {
+        const saved = localStorage.getItem('isLogin');
+        return saved === 'true' ? true : false;
+    });
+    useEffect(() => {
+        localStorage.setItem('isLogin', isLogin);
+    }, [isLogin]);
     
     const [token, setToken] = useState(localStorage.getItem("site") || "");
-    // const [products, setProducts] = useState();
 
     useEffect(()=>{
         fetch("http://localhost:5000/allProducts")
@@ -34,16 +35,13 @@ const ShopContextProvider = (props)=>{
     },[])
 
     const addToCart = (itemId)=>{
-        
-        // const newItem = new FormData();
-        // newItem.append("id", itemId);
+
         if(localStorage.getItem("site")){
             setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}));
             setCount((prev)=> prev+1);
             fetch("http://localhost:5000/addtocart",{
                 method: "POST",
                 headers:{
-                    Accept: 'application/form-data',
                     'Content-Type': 'application/json',
                     'token': `${localStorage.getItem("site")}`,
                 },
@@ -52,6 +50,9 @@ const ShopContextProvider = (props)=>{
             .then(response => response.json())
             .then((data)=>{
                 console.log(data);
+            })
+            .catch((error)=>{
+                console.log("error in fetch is ", error);
             })
         }
         else{

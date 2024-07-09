@@ -109,7 +109,7 @@ app.post("/signup", async (req, res) => {
         return res.status(404).json({message: "User already exists"});
     }
     let cart = {};
-    for(let i=0; i<10; i++){
+    for(let i=0; i<300; i++){
         cart[i] = 0;
     }
     const newUser = {
@@ -207,7 +207,7 @@ const fetchUser = async (req, res, next) =>{
     else{
         try {
             const data = jwt.verify(token, SECRET_KEY);
-            //console.log(data);
+            console.log(data);
             //console.log("data.user ", data.user);
             req.user = data;
             next();
@@ -221,11 +221,12 @@ const fetchUser = async (req, res, next) =>{
 app.post("/addtocart", fetchUser, async (req, res)=>{
     //console.log(req.body, req.user.id);
     const userId = req.user.id;
-    let userData = await User.findOne({_id: userId});
-    //console.log(userData);
-    userData.cartData[req.body.itemId]+=1;
-    console.log(userData.cartData);
-    await User.findOneAndUpdate({_id: userId}, {cartData: userData.cartData});
+    const updatedUser = await User.findOneAndUpdate(
+        { _id: userId },
+        { $inc: { [`cartData.${req.body.itemId}`]: 1 } },
+        { new: true } // This option returns the updated document
+    );
+    //console.log(updatedUser);
     res.json({"messgae": "succesfullt added"});
 })
 app.listen(5000, () => console.log(`server is running at port ${port}`));
