@@ -17,6 +17,11 @@ const ShopContextProvider = (props)=>{
     const [menu, setMenu] = useState("shop");
     const [isAdmin, setIsAdmin] = useState(false);
     const [isLogin, setIsLogin] = useState(false);
+    // if(localStorage.getItem("site")){
+    //     //const [isLogin, setIsLogin] = useState(true);
+    //     setIsLogin(true);
+    // }
+    
     const [token, setToken] = useState(localStorage.getItem("site") || "");
     // const [products, setProducts] = useState();
 
@@ -29,8 +34,30 @@ const ShopContextProvider = (props)=>{
     },[])
 
     const addToCart = (itemId)=>{
-        setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}));
-        setCount((prev)=> prev+1);
+        
+        // const newItem = new FormData();
+        // newItem.append("id", itemId);
+        if(localStorage.getItem("site")){
+            setCartItems((prev)=>({...prev,[itemId]:prev[itemId]+1}));
+            setCount((prev)=> prev+1);
+            fetch("http://localhost:5000/addtocart",{
+                method: "POST",
+                headers:{
+                    Accept: 'application/form-data',
+                    'Content-Type': 'application/json',
+                    'token': `${localStorage.getItem("site")}`,
+                },
+                body: JSON.stringify({"itemId": itemId}),
+            })
+            .then(response => response.json())
+            .then((data)=>{
+                console.log(data);
+            })
+        }
+        else{
+            console.log("Please login first");
+        }
+        
     } 
 
     const removeFromCart = (itemId)=>{

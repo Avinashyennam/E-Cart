@@ -196,4 +196,36 @@ app.get("/allusers", async (req, res)=>{
     const users = await User.find({});
     res.json(users);
 })
+
+// creating middleware for userId
+const fetchUser = async (req, res, next) =>{
+    const token = req.header("token");
+   // console.log(token);
+    if(!token){
+        res.status(401).json({"error": "authenticate using valid email and password"});
+    }
+    else{
+        try {
+            const data = jwt.verify(token, SECRET_KEY);
+            //console.log(data);
+            //console.log("data.user ", data.user);
+            req.user = data;
+            next();
+        } catch (error) {
+            res.status(401).json({"error": "authenticate using valid email and password"});
+        }
+    }
+}
+
+// creating route for adding products into user cart
+app.post("/addtocart", fetchUser, async (req, res)=>{
+    //console.log(req.body, req.user.id);
+    const userId = req.user.id;
+    let userData = await User.findOne({_id: userId});
+    //console.log(userData);
+    userData.cartData[req.body.itemId]+=1;
+    console.log(userData.cartData);
+    await User.findOneAndUpdate({_id: userId}, {cartData: userData.cartData});
+    res.json({"messgae": "succesfullt added"});
+})
 app.listen(5000, () => console.log(`server is running at port ${port}`));
