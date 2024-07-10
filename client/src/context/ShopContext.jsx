@@ -15,7 +15,14 @@ const ShopContextProvider = (props)=>{
     const [cartItems, setCartItems] = useState(getDefaultCart);
     const [count, setCount] = useState(0);
     const [menu, setMenu] = useState("shop");
-    const [isAdmin, setIsAdmin] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(()=>{
+        const saved = localStorage.getItem('isAdmin');
+        return saved === 'true' ? true : false;
+    });
+    useEffect(()=>{
+        localStorage.setItem('isAdmin', isAdmin);
+    }, [isAdmin]);
+
     const [isLogin, setIsLogin] = useState(() => {
         const saved = localStorage.getItem('isLogin');
         return saved === 'true' ? true : false;
@@ -47,15 +54,18 @@ const ShopContextProvider = (props)=>{
         .then((data)=>{
             setCartItems(data);
         })
+
+        for(let i=0;i<=300;i++){
+            if(cartItems[i]>0){
+                setCount((prev) => prev+cartItems[i]);
+            }
+        }
+
     }, [isLogin]);
 
     // useEffect(() =>{
-    //     for(let i=0;i<=300;i++){
-    //         if(cartItems[i]>0){
-    //             setCount((prev) => prev+cartItems[i]);
-    //         }
-    //     }
-    // }, [cartItems]);
+        
+    // }, []);    
 
     const addToCart = (itemId)=>{
 

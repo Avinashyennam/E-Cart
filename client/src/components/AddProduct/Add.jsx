@@ -52,7 +52,10 @@ const AddProduct = () => {
                 body: JSON.stringify(item)
             })
             .then(response => response.json())
-            .then((data)=> console.log(data));
+            .then((data)=> {
+                console.log(data);
+                alert("Succesfully added product");
+            });
         }
     }
 
