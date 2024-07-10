@@ -31,8 +31,31 @@ const ShopContextProvider = (props)=>{
         .then(response => response.json())
         .then((data)=>{
             setAllProducts(data);
-        })
+        })       
     },[])
+
+    useEffect(()=>{
+        fetch("http://localhost:5000/getcartdata",{
+            method: "POST",
+            headers:{
+                'Content-Type': 'application/json',
+                'token': `${localStorage.getItem("site")}`
+            },
+            body: ""
+        })
+        .then(response => response.json())
+        .then((data)=>{
+            setCartItems(data);
+        })
+    }, [isLogin]);
+
+    // useEffect(() =>{
+    //     for(let i=0;i<=300;i++){
+    //         if(cartItems[i]>0){
+    //             setCount((prev) => prev+cartItems[i]);
+    //         }
+    //     }
+    // }, [cartItems]);
 
     const addToCart = (itemId)=>{
 
@@ -56,7 +79,7 @@ const ShopContextProvider = (props)=>{
             })
         }
         else{
-            console.log("Please login first");
+            alert("Please login first");
         }
         
     } 

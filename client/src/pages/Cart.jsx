@@ -3,7 +3,7 @@ import { ShopContext } from "../context/ShopContext";
 
 const Cart = () => {
     const { cartItems, all_products, addToCart, removeFromCart, count, getTotalAmount, removed } = useContext(ShopContext);
-
+    console.log(cartItems);
     return (
         <>
             <div className="flex gap-8 p-8 bg-slate-100 md:flex-col md:items-center">

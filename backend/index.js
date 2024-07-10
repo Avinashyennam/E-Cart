@@ -59,7 +59,7 @@ app.post("/addProduct", async (req, res) => {
         new_price: req.body.new_price,
         category: req.body.category
     };
-    console.log(product);
+    //console.log(product);
     await Product.insertMany(product);
     res.json({
         success: true,
@@ -149,7 +149,7 @@ app.post("/login", async (req, res) => {
             { category: category }
         ]
     });
-    console.log(checkUser);
+    //console.log(checkUser);
     if (checkUser == null) {
         return res.status(404).json({message: "user not found"});
     }
@@ -200,19 +200,19 @@ app.get("/allusers", async (req, res)=>{
 // creating middleware for userId
 const fetchUser = async (req, res, next) =>{
     const token = req.header("token");
-   // console.log(token);
+    //console.log("token is ",token);
     if(!token){
         res.status(401).json({"error": "authenticate using valid email and password"});
     }
     else{
         try {
             const data = jwt.verify(token, SECRET_KEY);
-            console.log(data);
+            //console.log(data);
             //console.log("data.user ", data.user);
             req.user = data;
             next();
         } catch (error) {
-            res.status(401).json({"error": "authenticate using valid email and password"});
+            res.status(401).json({"error": "Invalid token received"});
         }
     }
 }
@@ -228,5 +228,14 @@ app.post("/addtocart", fetchUser, async (req, res)=>{
     );
     //console.log(updatedUser);
     res.json({"messgae": "succesfullt added"});
+})
+
+// creating a route for user cartData
+app.post("/getcartdata",fetchUser, async (req, res)=>{
+    const userId = req.user.id;
+    //console.log("user_id is ", userId);
+    //const userId = req.body;
+    const userData = await User.findOne({_id: userId});
+    res.json(userData.cartData);
 })
 app.listen(5000, () => console.log(`server is running at port ${port}`));
